@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 /* eslint-disable strict */
 /**
@@ -141,6 +141,7 @@
 
 // // These functions handle events (submit, click, etc)
 
+
 const STORE = {
   // 5 or more questions are required
   questions: [
@@ -205,10 +206,9 @@ const STORE = {
 /********** EVENT HANDLER FUNCTIONS **********/
 // Start Quiz button handler should call questions page render
 function handlerStart(){
-
   $('main').on('click', '#start-form', event => {
     event.preventDefault();
-    console.log('anything');
+    console.log('Game has started');
     return renderQuestionScreens();
   });
 }
@@ -220,7 +220,8 @@ function handlerSubmit(){
 
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
-    console.log('anything again');
+    
+    console.log(STORE.questions[0].question);
     //  return renderQuestionScreens();
   });
 }
@@ -237,25 +238,25 @@ function renderQuestionScreens() {
        <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
        </div>
      <div class= "question-box">  
-       <h2>Question X of 5</h2>
-       <P>This is a question?</P>
+       <h2>Question ${questionCounter}of 5</h2>
+       <P> ${STORE.questions[0].question} </P>
        
        <form id='question-form'>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">Answer1</label>
+           <label for="answers">${STORE.questions[0].answers[0]}</label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">Answer2 </label>
+           <label for="answers">${STORE.questions[0].answers[1]} </label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">Answer3 </label>
+           <label for="answers">${STORE.questions[0].answers[2]} </label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">Answer4 </label>
+           <label for="answers">${STORE.questions[0].answers[3]}</label>
            </div>
            <button type="submit" class= "glow-on-hover" id="submitbtn">Submit</button>   
        </form>
@@ -264,9 +265,11 @@ function renderQuestionScreens() {
  </main>`);
 }
 
+
+let questionCounter = 1;
 function countClicks() {
-  let clickCount = 0;
-  $('#submitbtn').click(function(event) {
+  
+  $('#submitbtn').on('submit', '#question-form',event => {
     clickCount += 1;
   });
 }
