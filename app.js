@@ -217,15 +217,12 @@ function handlerStart(){
 $(handlerStart);
 
 function handlerSubmit(){
-
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
-    
-    console.log(STORE.questions[0].question);
+    console.log(`handler submit working`);
     //  return renderQuestionScreens();
   });
 }
-
 
 $(handlerSubmit);
 
@@ -238,7 +235,7 @@ function renderQuestionScreens() {
        <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
        </div>
      <div class= "question-box">  
-       <h2>Question ${questionCounter}of 5</h2>
+       <h2>Question ${'x'}of 5</h2>
        <P> ${STORE.questions[0].question} </P>
        
        <form id='question-form'>
@@ -266,12 +263,3 @@ function renderQuestionScreens() {
 }
 
 
-let questionCounter = 1;
-function countClicks() {
-  
-  $('#submitbtn').on('submit', '#question-form',event => {
-    clickCount += 1;
-  });
-}
-
-$(countClicks);
