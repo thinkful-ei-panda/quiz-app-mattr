@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 // 'use strict';
 
 /* eslint-disable strict */
@@ -209,25 +210,44 @@ function handlerStart(){
   $('main').on('click', '#start-form', event => {
     event.preventDefault();
     console.log('Game has started');
-    return renderQuestionScreens();
+    return renderQuestionScreen();
   });
 }
 
 
 $(handlerStart);
 
+
+
 function handlerSubmit(){
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
     console.log(`handler submit working`);
-    //  return renderQuestionScreens();
+    let selectedAnswer = $("input[name='answer-name']:checked").val();
+    console.log(selectedAnswer);
+
+    // return renderCorrectScreen();
+    return renderWrongScreen();
   });
 }
 
 $(handlerSubmit);
 
 
-function renderQuestionScreens() {
+function handlerContinue(){
+  $('main').on('submit', '#continue-form',  event => {
+    event.preventDefault();
+    console.log(`handler continue working`);
+
+    // return renderCorrectScreen();
+    return renderQuestionScreen();
+  });
+}
+
+$(handlerContinue);
+
+
+function renderQuestionScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
    <section>
@@ -241,19 +261,19 @@ function renderQuestionScreens() {
        <form id='question-form'>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">${STORE.questions[0].answers[0]}</label>
+           <label for="answer">${STORE.questions[0].answers[0]}</label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">${STORE.questions[0].answers[1]} </label>
+           <label for="answer">${STORE.questions[0].answers[1]} </label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">${STORE.questions[0].answers[2]} </label>
+           <label for="answer">${STORE.questions[0].answers[2]} </label>
            </div>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answers">${STORE.questions[0].answers[3]}</label>
+           <label for="answer">${STORE.questions[0].answers[3]}</label>
            </div>
            <button type="submit" class= "glow-on-hover" id="submitbtn">Submit</button>   
        </form>
@@ -262,4 +282,27 @@ function renderQuestionScreens() {
  </main>`);
 }
 
+function renderCorrectScreen() {
+  console.log('renderQuestions ran succesfully!');
+  $('main').html(`<main>
+  <section>
+      <p>You got it right!</p>
+      <form id="continue-form">
+        <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
+      </form>
+  </section>
+</main>`);
+}
+
+function renderWrongScreen() {
+  console.log('renderQuestions ran succesfully!');
+  $('main').html(`<main>
+  <section>
+      <p>You got it wrong.</p>
+      <form id="continue-form">
+        <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
+      </form>
+  </section>
+</main>`);
+}
 
