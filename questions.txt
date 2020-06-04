@@ -1,0 +1,31 @@
+MOVIES QUIZ:
+
+1. Who directed the Titanic?
+A James Cameron
+B Steven Spielberg
+C Stanley Kubrick
+D Michael Bay
+
+2. Who plays Obediah Stane in Iron Man
+A Jeff Bridges
+B Jeff Goldblum
+C Jeff Daniels
+D Robert Downey Jr.
+
+3. Which NBA player is NOT in Space Jam
+A Scotty Pippen
+B Charles Barkley
+C Michael Jordan
+D Muggsy Bogues
+
+4. What was the tagline for Training Day
+A King Kong ain’t got nothin’ on me!
+B Life is in their hands -- Death is on their minds.
+C On every street in every city in this country, there is a nobody who dreams of being a somebody.
+D The Happiest Sound in All the World.
+
+5. What was the name of the computer in 2001: A Space Odyssey
+A HAL 9000
+B HAL 8000
+C HAL 6000
+D Commodore 64

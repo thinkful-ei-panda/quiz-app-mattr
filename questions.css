@@ -1,0 +1,9 @@
+/*DESKTOP SCREENS*/
+@media screen and (min-width: 900px) {
+
+    section {
+        display: flex;
+        flex-direction: row;
+    }
+
+}
