@@ -206,7 +206,7 @@ const STORE = {
 // Start Quiz button handler should call questions page render
 function handlerStart(){
 
-  $('#start').click(event => {
+  $('main').on('click', '#start-form', event => {
     event.preventDefault();
     console.log('anything');
     return renderQuestionScreens();
@@ -218,7 +218,7 @@ $(handlerStart);
 
 function handlerSubmit(){
 
-  $('form').submit(event => {
+  $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
     console.log('anything again');
     //  return renderQuestionScreens();
@@ -240,7 +240,7 @@ function renderQuestionScreens() {
        <h2>Question X of 5</h2>
        <P>This is a question?</P>
        
-       <form>
+       <form id='question-form'>
          <div class= "input-selection">
            <input type="radio" id="answer" name="answer-name" value="answer">
            <label for="answers">Answer1</label>
