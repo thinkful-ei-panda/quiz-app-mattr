@@ -202,10 +202,6 @@ const STORE = {
 };
 
 
-
-
-
-
 /********** EVENT HANDLER FUNCTIONS **********/
 // Start Quiz button handler should call questions page render
 function handlerStart(){
