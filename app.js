@@ -84,22 +84,19 @@ const STORE = {
 /********** EVENT HANDLER FUNCTIONS **********/
 // These functions handle events (submit, click, etc)
 
-// Start Quiz button handler should call questions page render
+// Start submit handler
 function handlerStart(){
   $('main').on('click', '#start-form', event => {
     event.preventDefault();
     STORE.quizStarted = true;
     console.log('Game has started');
-    STORE.questionNumber = 1;
+    // STORE.questionNumber = 1;
     return renderQuestionScreen();
   });
 }
-
-
 $(handlerStart);
 
-
-
+// Question submit event handler
 function handlerSubmit(){
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
@@ -110,15 +107,18 @@ function handlerSubmit(){
 
     //Test console logs (not needed)
     console.log(selectedAnswer);
-    console.log(STORE.questions[STORE.questionNumber-1].correctAnswer);
+    console.log(STORE.questions[STORE.questionNumber].correctAnswer);
     
-    //Adds to the question count
-    STORE.questionNumber += 1;
+    
     console.log(STORE.questionNumber);
+
+    let currentCorrectAnswer = STORE.questions[STORE.questionNumber].answers[0];
+    console.log(currentCorrectAnswer);
+    console.log(selectedAnswer === currentCorrectAnswer);
 
 
     // This Conditional statement checks the answer
-    if(selectedAnswer === STORE.questions[STORE.questionNumber-1].answers[0]) {
+    if(selectedAnswer === currentCorrectAnswer) {
       STORE.score += 1;
       console.log(`Your Score is ${STORE.score} out of 5`);
       return renderCorrectScreen();
@@ -131,23 +131,43 @@ function handlerSubmit(){
 
 $(handlerSubmit);
 
-
+// Continue submit event handler
 function handlerContinue(){
-  $('main').on('submit', '#continue-form',  event => {
+  $('main').on('click', '#continue-form',  event => {
     event.preventDefault();
     console.log(`handler continue working`);
 
-    // return renderCorrectScreen();
-    return renderQuestionScreen();
+    //Adds to the question count
+    STORE.questionNumber += 1;
+    if(STORE.questionNumber < 7){
+      return renderQuestionScreen();
+    } else {
+      return renderFinalScreen();
+    }
+    
   });
 }
 
 $(handlerContinue);
 
+// Reset submit event handler
+function handlerReset(){
+  $('main').on('submit', '#reset',  event => {
+    event.preventDefault();
+    console.log(`handler reset working`);
+    STORE.questionNumber = 0;
+    STORE.score = 0;
+    return renderHomeScreen();
+
+  });
+}
+
+$(handlerReset);
+
 
 /********** RENDER FUNCTION(S) **********/
-function renderHome() {
-  console.log('renderHome ran succesfully!');
+function renderHomeScreen() {
+  console.log('renderHomeScreen ran succesfully!');
   $('main').html(`<main>
   <section>
       <form id="start-form" class="starting">
@@ -157,7 +177,7 @@ function renderHome() {
 </main>`);
 }
 
-$(renderHome)
+$(renderHomeScreen);
 
 
 function renderQuestionScreen() {
@@ -168,25 +188,25 @@ function renderQuestionScreen() {
        <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
        </div>
      <div class= "question-box">  
-       <h2>Question ${STORE.questionNumber}of 5</h2>
-       <P> ${STORE.questions[STORE.questionNumber -1].question} </P>
+       <h2>Question ${STORE.questionNumber + 1} out of 5</h2>
+       <P> ${STORE.questions[STORE.questionNumber].question} </P>
        
        <form id='question-form'>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber -1].answers[0]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[0]}</label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[0]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber].answers[0]}</label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber -1].answers[1]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[1]} </label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[1]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber].answers[1]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber-1].answers[2]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[2]} </label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[2]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber].answers[2]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber-1].answers[3]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[3]}</label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[3]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber].answers[3]}</label>
            </div>
            <button type="submit" class= "glow-on-hover" id="submitbtn">Submit</button>   
        </form>
@@ -200,6 +220,7 @@ function renderCorrectScreen() {
   $('main').html(`<main>
   <section>
       <p>You got it right!</p>
+      <p>${`Your Score is ${STORE.score} out of 5`}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
       </form>
@@ -212,9 +233,23 @@ function renderWrongScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
   <section>
-      <p>You got it wrong.</p>
+      <p>You got it wrong. The correct answer is ${STORE.questions[STORE.questionNumber-1].answers[0]}</p>
+      <p>Your Score is ${STORE.score} out of 5</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
+      </form>
+  </section>
+</main>`);
+}
+
+function renderFinalScreen() {
+  console.log('renderFinal ran succesfully!');
+  $('main').html(`<main>
+  <section>
+      <p>Quiz Results</p>
+      <p>Your Score is ${STORE.score} out of 5</p>
+      <form id="continue-form">
+        <button type="submit" class= "glow-on-hover" id="reset">Reset</button>
       </form>
   </section>
 </main>`);
