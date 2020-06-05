@@ -134,6 +134,7 @@ function handlerContinue(){
       STORE.questionNumber += 1;
       return renderQuestionScreen();
     } else {
+      STORE.questionNumber += 1;
       return renderResultsScreen();
     }    
   });
