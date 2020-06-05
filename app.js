@@ -249,7 +249,6 @@ function renderResultsScreen() {
       <p>Quiz Results</p>
       <p>Your Score is ${STORE.score} out of 5</p>
       <form id="continue-form">
-        // <button type="submit" class= "glow-on-hover" id="reset">Reset</button>
         <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>
       </form>
   </section>
