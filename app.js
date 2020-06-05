@@ -47,7 +47,7 @@ const STORE = {
       question: 'Which NBA player is NOT in Space Jam',
       answer: [
         'Scotty Pippen',
-        'Charles Pippen',
+        'Charles Barkley',
         'Muggsy Bogues',
         'Michael Jordan'
       ],
@@ -87,9 +87,10 @@ const STORE = {
 function handlerStart(){
   $('main').on('click', '#start-form', event => {
     event.preventDefault();
+    STORE.questionNumber = 0;
+    STORE.score = 0;
     STORE.quizStarted = true;
-    console.log('Game has started');
-    // STORE.questionNumber = 1;
+    // console.log('Game has started');
     return renderQuestionScreen();
   });
 }
@@ -119,10 +120,12 @@ function handlerSubmit(){
     // This Conditional statement checks the answer
     if(selectedAnswer === currentCorrectAnswer) {
       STORE.score += 1;
+      // STORE.questionNumber += 1;
       console.log(`Your Score is ${STORE.score} out of 5`);
       return renderCorrectScreen();
     
     } else {
+      // STORE.questionNumber += 1;
       return renderWrongScreen();
     }
   });
@@ -132,18 +135,17 @@ $(handlerSubmit);
 
 // Continue submit event handler
 function handlerContinue(){
-  $('main').on('click', '#continue-form',  event => {
+  $('main').on('submit', '#continue-form',  event => {
     event.preventDefault();
     console.log(`handler continue working`);
-
     //Adds to the question count
-    STORE.questionNumber += 1;
-    if(STORE.questionNumber < 7){
+    
+    if(STORE.questionNumber < 4){
+      STORE.questionNumber += 1;
       return renderQuestionScreen();
     } else {
-      return renderFinalScreen();
-    }
-    
+      return renderResultsScreen();
+    }    
   });
 }
 
@@ -154,9 +156,8 @@ function handlerReset(){
   $('main').on('submit', '#reset',  event => {
     event.preventDefault();
     console.log(`handler reset working`);
-    STORE.questionNumber = 0;
-    STORE.score = 0;
-    return renderHomeScreen();
+    
+    return renderFinalScreen();
 
   });
 }
@@ -229,7 +230,7 @@ function renderCorrectScreen() {
 
 //a function that renders the wrong answer screen
 function renderWrongScreen() {
-  console.log('renderQuestions ran succesfully!');
+  // console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
   <section>
       <p>You got it wrong. The correct answer is ${STORE.questions[STORE.questionNumber-1].answers[0]}</p>
@@ -241,16 +242,19 @@ function renderWrongScreen() {
 </main>`);
 }
 
-function renderFinalScreen() {
-  console.log('renderFinal ran succesfully!');
+function renderResultsScreen() {
+  // console.log('renderFinal ran succesfully!');
   $('main').html(`<main>
   <section>
       <p>Quiz Results</p>
       <p>Your Score is ${STORE.score} out of 5</p>
       <form id="continue-form">
-        <button type="submit" class= "glow-on-hover" id="reset">Reset</button>
+        // <button type="submit" class= "glow-on-hover" id="reset">Reset</button>
+        <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>
       </form>
   </section>
 </main>`);
 }
+
+
 
