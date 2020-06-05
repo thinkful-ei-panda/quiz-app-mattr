@@ -54,23 +54,22 @@ const STORE = {
       correctAnswer: 'Scotty Pippen'
     },
     {
-      question: 'What was the tagline for Training Day',
+      question: 'Star character "Craig" was played by which Rapper',
       answers: [
-        'King Kong ain’t got nothin’ on me!',
-        'Life is in their hands -- Death is on their minds.',
-        'On every street in every city in this country, there is a nobody who dreams of being a somebody.',
-        'On every street in every city in this country, there is a nobody who dreams of being a somebody.',
-        'The Happiest Sound in All the World'
+        'Ice Cube',
+        'Ice T',
+        'Common',
+        '50 cent'
       ],
       correctAnswer: 'King Kong ain’t got nothin’ on me!'
     },
     {
-      question: 'What was the name of the computer in 2001: A Space Odyssey',
+      question: 'Actor who starred in 2015 movie Black Hat',
       answers: [
-        'Hal 9000',
-        'Hal 8000',
-        'Hal 6000',
-        'Commodore 64'
+        'Chris Hemsworth',
+        'Liam Hemsworth',
+        'Luke Hemsworth',
+        'Tom Hanks'
       ],
       correctAnswer: 'Hal 9000'
     }
