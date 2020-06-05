@@ -41,7 +41,7 @@ const STORE = {
         'Anthony Mackie',
         'Nicholas Pinnock'
       ],
-      correctAnswer: 'Don Cheadle'
+      correctAnswer: 'Terrance Howard'
     },
     {
       question: 'Who played Deebo in the movie Friday?',
