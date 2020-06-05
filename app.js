@@ -69,6 +69,12 @@ const STORE = {
   score: 0
 };
 
+const IMAGE_ARRAY = ["img/titanic.jpg", "img/iron.jpg", "img/friday.jpg", "img/blackhat.jpg", "img/blackhat.jpg"];
+
+
+
+
+
 
 /********** EVENT HANDLER FUNCTIONS **********/
 // These functions handle events (submit, click, etc)
@@ -172,11 +178,13 @@ $(renderHomeScreen);
 
 
 function renderQuestionScreen() {
+  let currentImage = IMAGE_ARRAY[STORE.questionNumber];
+console.log(currentImage);
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
    <section>
      <div class= "image-box">
-       <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
+       <img src=${currentImage} alt="movie poster">
        </div>
      <div class= "question-box">  
        <h2>Question ${STORE.questionNumber + 1} out of ${STORE.questions.length}</h2>
@@ -204,6 +212,8 @@ function renderQuestionScreen() {
      </div>
    </section>
  </main>`);
+
+
 }
 
 function renderCorrectScreen() {
