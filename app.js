@@ -44,16 +44,6 @@ const STORE = {
       correctAnswer: 'Jeff Bridges'
     },
     {
-      question: 'Which NBA player is NOT in Space Jam',
-      answer: [
-        'Scotty Pippen',
-        'Charles Barkley',
-        'Muggsy Bogues',
-        'Michael Jordan'
-      ],
-      correctAnswer: 'Scotty Pippen'
-    },
-    {
       question: 'Star character "Craig" was played by which Rapper',
       answers: [
         'Ice Cube',
@@ -140,7 +130,7 @@ function handlerContinue(){
     console.log(`handler continue working`);
     //Adds to the question count
     
-    if(STORE.questionNumber < 4){
+    if(STORE.questionNumber < STORE.questions.length-1){
       STORE.questionNumber += 1;
       return renderQuestionScreen();
     } else {
@@ -157,7 +147,7 @@ function handlerReset(){
     event.preventDefault();
     console.log(`handler reset working`);
     
-    return renderFinalScreen();
+    return renderResultsScreen();
 
   });
 }
@@ -188,7 +178,7 @@ function renderQuestionScreen() {
        <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
        </div>
      <div class= "question-box">  
-       <h2>Question ${STORE.questionNumber + 1} out of 5</h2>
+       <h2>Question ${STORE.questionNumber + 1} out of ${STORE.questions.length}</h2>
        <P> ${STORE.questions[STORE.questionNumber].question} </P>
        
        <form id='question-form'>
@@ -220,7 +210,7 @@ function renderCorrectScreen() {
   $('main').html(`<main>
   <section>
       <p>You got it right!</p>
-      <p>${`Your Score is ${STORE.score} out of 5`}</p>
+      <p>${`Your Score is ${STORE.score} out of ${STORE.questions.length}`}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
       </form>
@@ -230,11 +220,12 @@ function renderCorrectScreen() {
 
 //a function that renders the wrong answer screen
 function renderWrongScreen() {
-  // console.log('renderQuestions ran succesfully!');
+  console.log('inside wrong screen ran succesfully!' + STORE.questionNumber);
+  console.log( `${STORE.questions[STORE.questionNumber].correctAnswer}`);
   $('main').html(`<main>
   <section>
-      <p>You got it wrong. The correct answer is ${STORE.questions[STORE.questionNumber-1].answers[0]}</p>
-      <p>Your Score is ${STORE.score} out of 5</p>
+      <p>You got it wrong. The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}</p>
+      <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
       </form>
@@ -247,7 +238,7 @@ function renderResultsScreen() {
   $('main').html(`<main>
   <section>
       <p>Quiz Results</p>
-      <p>Your Score is ${STORE.score} out of 5</p>
+      <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>
       </form>
