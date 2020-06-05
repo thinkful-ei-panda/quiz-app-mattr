@@ -2,69 +2,6 @@
 // 'use strict';
 
 /* eslint-disable strict */
-/**
- * Example store structure
- */
-// const STORE = {
-//   // 5 or more questions are required
-//   questions: [
-//     {
-//       question: 'Who directed the Titanic?',
-//       answers: [
-//         'James Cameron',
-//         'Steven Spielberg',
-//         'Stanley Kubrick',
-//         'Michael Bay'
-//       ],
-//       correctAnswer: 'James Cameron'
-//     },
-//     {
-//       question: 'Who plays Obediah Stane in Iron Man',
-//       answers: [
-//         'Jeff Bridges',
-//         'Jeff Goldblum',
-//         'Jeff Daniels',
-//         'Robert Downey Jr.'
-//       ],
-//       correctAnswer: 'Jeff Bridges'
-//     },
-//     {
-//       question: 'Which NBA player is NOT in Space Jam',
-//       answer: [
-//         'Scotty Pippen',
-//         'Charles Pippen',
-//         'Muggsy Bogues',
-//         'Michael Jordan'
-//       ],
-//       correctAnswer: 'Scotty Pippen'
-//     },
-//     {
-//       question: 'What was the tagline for Training Day',
-//       answers: [
-//         'King Kong ain’t got nothin’ on me!',
-//         'Life is in their hands -- Death is on their minds.',
-//         'On every street in every city in this country, there is a nobody who dreams of being a somebody.',
-//         'On every street in every city in this country, there is a nobody who dreams of being a somebody.',
-//         'The Happiest Sound in All the World'
-//       ],
-//       correctAnswer: 'King Kong ain’t got nothin’ on me!'
-//     },
-//     {
-//       question: 'What was the name of the computer in 2001: A Space Odyssey',
-//       answers: [
-//         'Hal 9000',
-//         'Hal 8000',
-//         'Hal 6000',
-//         'Commodore 64'
-//       ],
-//       correctAnswer: 'Hal 9000'
-//     }
-//   ],
-//   quizStarted: false,
-//   questionNumber: 0,
-//   score: 0
-// };
-
 // /**
 //  * 
 //  * Technical requirements:
@@ -82,69 +19,9 @@
 
 // /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-// // These functions return HTML templates
-
-// //a function that returns the question template
-// function questionTemplate() {
-//   console.log('questionTemplate ran succesfully!');
-// }
-
-// //a function that returns the individual answer templates
-// function answerTemplate() {
-//   console.log('answerTemplate ran succesfully!');
-// }
-
-// //a function that creates the answers form 
-// function answersFormTemplate() {
-//   console.log('$answersFormTemplate ran successfully!');
-// }
-
-// //a function display how far through the list of questions the user is (x out of 5 questions)
-// function progressTemplate() {
-//   console.log('progressTemplate ran successfully!');
-// }
-
-// //a function to return the final results template
-// function finalResultsTemplate() {
-//   console.log('finalResultsTemplate ran succesfully!');
-// }
-
-// /********** RENDER FUNCTION(S) **********/
-
-// // This function conditionally replaces the contents of the <main> tag based on the state of the store
-
-// // a function that renders the welcome screen
-// function renderWelcomeScreen() {
-//   console.log('renderWelcomeScreen ran succesfully!');
-// }
-
-// // a function that renders the question screens
-// function renderQuestionScreens() {
-//   console.log('renderQuestions ran succesfully!');
-// }
-
-// // a function that renders the correct answer screen
-// function renderCorrectScreen() {
-//   console.log('rendomerCorrectScreen ran succesfully!');
-// }
-
-// //a function that renders the wrong answer screen
-// function renderWrongScreen() {
-//   console.log('renderWrongScreen ran successfully!');
-// }
-
-// // a function that renders the final results screen
-// function renderFinalScreen() {
-//   console.log('renderFinalScreen ran succesfully!');
-// }
-
-// /********** EVENT HANDLER FUNCTIONS **********/
-
-// // These functions handle events (submit, click, etc)
-
+/* Example store structure */
 
 const STORE = {
-  // 5 or more questions are required
   questions: [
     {
       question: 'Who directed the Titanic?',
@@ -205,11 +82,15 @@ const STORE = {
 
 
 /********** EVENT HANDLER FUNCTIONS **********/
+// These functions handle events (submit, click, etc)
+
 // Start Quiz button handler should call questions page render
 function handlerStart(){
   $('main').on('click', '#start-form', event => {
     event.preventDefault();
+    STORE.quizStarted = true;
     console.log('Game has started');
+    STORE.questionNumber = 1;
     return renderQuestionScreen();
   });
 }
@@ -223,11 +104,28 @@ function handlerSubmit(){
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
     console.log(`handler submit working`);
-    let selectedAnswer = $("input[name='answer-name']:checked").val();
-    console.log(selectedAnswer);
 
-    // return renderCorrectScreen();
-    return renderWrongScreen();
+    // created a variable to represent the current answer input value
+    let selectedAnswer = $("input[name='answer-name']:checked").val();
+
+    //Test console logs (not needed)
+    console.log(selectedAnswer);
+    console.log(STORE.questions[STORE.questionNumber-1].correctAnswer);
+    
+    //Adds to the question count
+    STORE.questionNumber += 1;
+    console.log(STORE.questionNumber);
+
+
+    // This Conditional statement checks the answer
+    if(selectedAnswer === STORE.questions[STORE.questionNumber-1].answers[0]) {
+      STORE.score += 1;
+      console.log(`Your Score is ${STORE.score} out of 5`);
+      return renderCorrectScreen();
+    
+    } else {
+      return renderWrongScreen();
+    }
   });
 }
 
@@ -247,6 +145,21 @@ function handlerContinue(){
 $(handlerContinue);
 
 
+/********** RENDER FUNCTION(S) **********/
+function renderHome() {
+  console.log('renderHome ran succesfully!');
+  $('main').html(`<main>
+  <section>
+      <form id="start-form" class="starting">
+        <button type="submit" class= "glow-on-hover" id="start">Start</button>
+        </form>
+  </section>
+</main>`);
+}
+
+$(renderHome)
+
+
 function renderQuestionScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
@@ -255,25 +168,25 @@ function renderQuestionScreen() {
        <img src="img/titanic.jpg" alt="ALT" width="WIDTH" height="HIEGHT">
        </div>
      <div class= "question-box">  
-       <h2>Question ${'x'}of 5</h2>
-       <P> ${STORE.questions[0].question} </P>
+       <h2>Question ${STORE.questionNumber}of 5</h2>
+       <P> ${STORE.questions[STORE.questionNumber -1].question} </P>
        
        <form id='question-form'>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answer">${STORE.questions[0].answers[0]}</label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber -1].answers[0]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[0]}</label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answer">${STORE.questions[0].answers[1]} </label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber -1].answers[1]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[1]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answer">${STORE.questions[0].answers[2]} </label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber-1].answers[2]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[2]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="answer">
-           <label for="answer">${STORE.questions[0].answers[3]}</label>
+           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber-1].answers[3]}">
+           <label for="answer">${STORE.questions[STORE.questionNumber -1].answers[3]}</label>
            </div>
            <button type="submit" class= "glow-on-hover" id="submitbtn">Submit</button>   
        </form>
@@ -294,6 +207,7 @@ function renderCorrectScreen() {
 </main>`);
 }
 
+//a function that renders the wrong answer screen
 function renderWrongScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
