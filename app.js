@@ -217,6 +217,8 @@ function renderCorrectScreen() {
       </form>
   </section>
 </main>`);
+
+$('main').children().css("flex-direction", "column");
 }
 
 //a function that renders the wrong answer screen
@@ -232,6 +234,8 @@ function renderWrongScreen() {
       </form>
   </section>
 </main>`);
+
+$('main').children().css("flex-direction", "column");
 }
 
 function renderResultsScreen() {
@@ -245,6 +249,9 @@ function renderResultsScreen() {
       </form>
   </section>
 </main>`);
+
+$('main').children().css("flex-direction", "column");
+$('main').children().find(".glow-on-hover").css("text-align", "center")
 }
 
 
