@@ -34,34 +34,44 @@ const STORE = {
       correctAnswer: 'James Cameron'
     },
     {
-      question: 'Who plays Obediah Stane in Iron Man',
+      question: 'Who plays James Rupert "Rhodey" Rhodes in Iron Man',
       answers: [
-        'Jeff Bridges',
-        'Jeff Goldblum',
-        'Jeff Daniels',
-        'Robert Downey Jr.'
+        'Don Cheadle',
+        'Terrance Howard',
+        'Anthony Mackie',
+        'Nicholas Pinnock'
       ],
-      correctAnswer: 'Jeff Bridges'
+      correctAnswer: 'Don Cheadle'
     },
     {
-      question: 'Star character "Craig" was played by which Rapper',
+      question: 'Who played Deebo in the movie Friday?',
       answers: [
         'Ice Cube',
         'Ice T',
-        'Common',
+        'Tom Lister Jr.',
         '50 cent'
       ],
       correctAnswer: 'King Kong ain’t got nothin’ on me!'
     },
     {
-      question: 'Actor who starred in 2015 movie Black Hat',
+      question: 'Who played Chen Lien in 2015 movie Black Hat?',
       answers: [
-        'Chris Hemsworth',
-        'Liam Hemsworth',
+        'Andy On',
+        'Wang Leehom',
         'Luke Hemsworth',
-        'Tom Hanks'
+        'Tang Wei'
       ],
-      correctAnswer: 'Hal 9000'
+      correctAnswer: 'Tang Wei'
+    },
+    {
+      question: 'What is the Black Panther\'s real name?',
+      answers: [
+        'T\'Challa',
+        'T\'Chaka',
+        'Okoye',
+        'W\'Kabi'
+      ],
+      correctAnswer: 'T\'Challa'
     }
   ],
   quizStarted: false,
@@ -69,7 +79,7 @@ const STORE = {
   score: 0
 };
 
-const IMAGE_ARRAY = ["img/titanic.jpg", "img/iron.jpg", "img/friday.jpg", "img/blackhat.jpg", "img/blackhat.jpg"];
+const IMAGE_ARRAY = ["img/titanic.jpg", "img/iron.jpg", "img/friday.jpg", "img/blackhat.jpg", "img/black-panther.jpg"];
 
 
 
