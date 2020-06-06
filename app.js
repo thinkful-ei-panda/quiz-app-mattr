@@ -34,7 +34,7 @@ const STORE = {
       correctAnswer: 'James Cameron'
     },
     {
-      question: 'Who plays James Rupert "Rhodey" Rhodes in Iron Man?',
+      question: 'Who plays James "Rhodey" Rhodes in Iron Man?',
       answers: [
         'Don Cheadle',
         'Terrance Howard',
