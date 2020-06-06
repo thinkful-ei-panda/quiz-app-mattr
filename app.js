@@ -66,12 +66,12 @@ const STORE = {
     {
       question: 'What is the Black Panther\'s real name?',
       answers: [
-        'T\'Challa',
-        'T\'Chaka',
+        "T'Challa",
+        "T'Chaka",
         'Okoye',
-        'W\'Kabi'
+        "W\'Kabi"
       ],
-      correctAnswer: 'T\'Challa'
+      correctAnswer: "T'Challa"
     }
   ],
   quizStarted: false,
@@ -118,7 +118,7 @@ function handlerSubmit(){
     
     console.log(STORE.questionNumber);
 
-    let currentCorrectAnswer = STORE.questions[STORE.questionNumber].answers[0];
+    let currentCorrectAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
     console.log(currentCorrectAnswer);
     console.log(selectedAnswer === currentCorrectAnswer);
 
