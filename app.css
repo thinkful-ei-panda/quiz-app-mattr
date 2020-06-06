@@ -35,16 +35,23 @@ h1 {
 }
 
 h1 :after {
-  content : 'Hello World';
+  /* content : 'Movie Quiz'; */
   color: #d6d6d6;
   text-shadow: 0 1px 0 white;
 }
 
 h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: #bde0ff;
+  color: #0600538f;
   font-size: 2.2em;
-  box-shadow: #a4d1f8;
+  box-shadow: inset 11 11px 22px 20px #a4d1f8;
+}
+
+h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #a4d1f8;
+  font-size: 2.2em;
+  box-shadow: 0 2px 12px -4px #a4d1f8;
 }
 
 img {
@@ -75,8 +82,10 @@ section{
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
-  background:  linear-gradient(
-    #00829973,
+  background:linear-gradient(
+    #0095afd8,
+    #0600538f,
+    #0600538f,
     #0600538f
     ), url(img/swirl.gif);
   background-size: cover; 
@@ -97,9 +106,10 @@ form {
   height: 50px;
 }
 
-.input-selction{
-  margin-top: 40px;
-  padding: 20px;
+.input-selection{
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 5px;
 }
 
 p{
@@ -114,6 +124,7 @@ p{
 
 .input-selection {
   margin: 10px;
+  font-size: 1.3em;
 }
 
 
@@ -141,6 +152,7 @@ p{
   font-size: 1em;
   animation: glowing 20s linear infinite;
   flex: 2;
+  width: 100px;
 }
 
 .glow-on-hover:before {

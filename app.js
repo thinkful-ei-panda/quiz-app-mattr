@@ -247,7 +247,7 @@ function renderWrongScreen() {
   console.log( `${STORE.questions[STORE.questionNumber].correctAnswer}`);
   $('main').html(`<main>
   <section>
-      <h2>You got it wrong.</h2>
+      <h3>You got it wrong.</h3>
       <p>The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}.</p>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
@@ -264,7 +264,7 @@ function renderResultsScreen() {
   // console.log('renderFinal ran succesfully!');
   $('main').html(`<main>
   <section>
-      <h2>Quiz Results</h2>
+      <h3>Quiz Results</h3>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>
