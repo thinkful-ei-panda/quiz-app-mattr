@@ -32,6 +32,14 @@ h1 {
   font-size: 4em;
   color: #a4d1f8;
   text-align: center;
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: #a4d1f8;
+  text-shadow:
+  1px 1px 0 #a4d1f8,
+-1px -1px 0 #a4d1f8,  
+ 1px -1px 0 #000,
+ -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
 
 h1 :after {
@@ -45,6 +53,14 @@ h2 {
   color: #0600538f;
   font-size: 2.2em;
   box-shadow: 11 11px 22px 20px #a4d1f8;
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: #a4d1f8;
+  text-shadow:
+  1px 1px 0 #a4d1f8,
+-1px -1px 0 #a4d1f8,  
+ 1px -1px 0 #000,
+ -1px 1px 0 #000,
+  1px 1px 0 #000;
   
 }
 
