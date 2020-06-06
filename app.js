@@ -283,10 +283,8 @@ function handlerEverything(){
   $(handlerContinue);
   $(handlerReset);
   $(renderHomeScreen);
-  
-
-
 }
+
 $(handlerEverything);
 
 
