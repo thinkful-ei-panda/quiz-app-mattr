@@ -45,6 +45,7 @@ h2 {
   color: #0600538f;
   font-size: 2.2em;
   box-shadow: inset 11 11px 22px 20px #a4d1f8;
+  
 }
 
 h3 {
@@ -117,13 +118,14 @@ p{
   font-size: 1.3em;
   color: white;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   flex: 2;
+  text-align: center;
   
 }
 
 .input-selection {
-  margin: 10px;
+  margin: 5px;
   font-size: 1.3em;
 }
 
@@ -153,6 +155,7 @@ p{
   animation: glowing 20s linear infinite;
   flex: 2;
   width: 100px;
+  margin-top: 10px;
 }
 
 .glow-on-hover:before {
