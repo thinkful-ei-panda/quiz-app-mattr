@@ -59,9 +59,9 @@ const STORE = {
         'Andy On',
         'Wang Leehom',
         'Luke Hemsworth',
-        'Tang Wei'
+        'Wei Tang'
       ],
-      correctAnswer: 'Tang Wei'
+      correctAnswer: 'Wei Tang'
     },
     {
       question: 'What is the Black Panther\'s real name?',
