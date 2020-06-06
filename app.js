@@ -100,7 +100,7 @@ function handlerStart(){
     return renderQuestionScreen();
   });
 }
-$(handlerStart);
+// $(handlerStart);
 
 // Question submit event handler
 function handlerSubmit(){
@@ -137,7 +137,7 @@ function handlerSubmit(){
   });
 }
 
-$(handlerSubmit);
+// $(handlerSubmit);
 
 // Continue submit event handler
 function handlerContinue(){
@@ -156,7 +156,7 @@ function handlerContinue(){
   });
 }
 
-$(handlerContinue);
+// $(handlerContinue);
 
 // Reset submit event handler
 function handlerReset(){
@@ -169,7 +169,7 @@ function handlerReset(){
   });
 }
 
-$(handlerReset);
+// $(handlerReset);
 
 
 /********** RENDER FUNCTION(S) **********/
@@ -184,7 +184,7 @@ function renderHomeScreen() {
 </main>`);
 }
 
-$(renderHomeScreen);
+// $(renderHomeScreen);
 
 
 function renderQuestionScreen() {
@@ -276,5 +276,17 @@ $('main').children().css("flex-direction", "column");
 $('main').children().find(".glow-on-hover").css("text-align", "center")
 }
 
+
+function handlerEverything(){
+  $(handlerStart);
+  $(handlerSubmit);
+  $(handlerContinue);
+  $(handlerReset);
+  $(renderHomeScreen);
+  
+
+
+}
+$(handlerEverything);
 
 
