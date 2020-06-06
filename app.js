@@ -34,7 +34,7 @@ const STORE = {
       correctAnswer: 'James Cameron'
     },
     {
-      question: 'Who plays James Rupert "Rhodey" Rhodes in Iron Man',
+      question: 'Who plays James Rupert "Rhodey" Rhodes in Iron Man?',
       answers: [
         'Don Cheadle',
         'Terrance Howard',
@@ -51,7 +51,7 @@ const STORE = {
         'Tom Lister Jr.',
         '50 cent'
       ],
-      correctAnswer: 'King Kong ain’t got nothin’ on me!'
+      correctAnswer: 'Tom Lister Jr.'
     },
     {
       question: 'Who played Chen Lien in 2015 movie Black Hat?',
@@ -247,7 +247,8 @@ function renderWrongScreen() {
   console.log( `${STORE.questions[STORE.questionNumber].correctAnswer}`);
   $('main').html(`<main>
   <section>
-      <p>You got it wrong. The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}</p>
+      <h2>You got it wrong.</h2>
+      <p>The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}.</p>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
@@ -256,13 +257,14 @@ function renderWrongScreen() {
 </main>`);
 
 $('main').children().css("flex-direction", "column");
+$('main').children().find("p").css("text-align", "center", "font-size", "5em")
 }
 
 function renderResultsScreen() {
   // console.log('renderFinal ran succesfully!');
   $('main').html(`<main>
   <section>
-      <p>Quiz Results</p>
+      <h2>Quiz Results</h2>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>

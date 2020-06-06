@@ -24,18 +24,27 @@ body {
   background: url("img/bluebg.jpg");
     background-size: cover;
     background-repeat: no-repeat; 
-    height: 
+    background-color: #a4d1f8;
 }
 
 h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 2.5em;
-  color: white;
+  font-size: 4em;
+  color: #a4d1f8;
+  text-align: center;
+}
 
+h1 :after {
+  content : 'Hello World';
+  color: #d6d6d6;
+  text-shadow: 0 1px 0 white;
 }
 
 h2 {
-  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #bde0ff;
+  font-size: 2.2em;
+  box-shadow: #a4d1f8;
 }
 
 img {
