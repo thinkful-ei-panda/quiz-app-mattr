@@ -254,8 +254,8 @@ function renderWrongScreen() {
   $('main').html(`<main>
   <section>
       <h3>You got it wrong.</h3>
-      <p>The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}.</p>
       <img src="img/wrong-screen2.gif" class="wrong-gif" "alt="Undercover Brother clip">
+      <p>The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}.</p>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
