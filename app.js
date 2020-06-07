@@ -130,8 +130,10 @@ function handlerSubmit(){
       console.log(`Your Score is ${STORE.score} out of 5`);
       return renderCorrectScreen();
     
-    } else {
+    } else if (selectedAnswer.length < 1) {
       // STORE.questionNumber += 1;
+      return '';
+    } else {
       return renderWrongScreen();
     }
   });
@@ -176,12 +178,14 @@ function handlerReset(){
 function renderHomeScreen() {
   console.log('renderHomeScreen ran succesfully!');
   $('main').html(`<main>
+  <img src="img/ironmanbg.gif" "alt="irom man clip"> 
   <section>
       <form id="start-form" class="starting">
         <button type="submit" class= "glow-on-hover" id="start">Start</button>
         </form>
   </section>
 </main>`);
+$('h1').addClass("animated bounce")
 }
 
 // $(renderHomeScreen);
@@ -217,7 +221,7 @@ console.log(currentImage);
            <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[3]}">
            <label for="answer">${STORE.questions[STORE.questionNumber].answers[3]}</label>
            </div>
-           <button type="submit" class= "glow-on-hover" id="submitbtn">Submit</button>   
+           <button type="submit" class= "glow-on-hover" id="submitbtn" required>Submit</button>   
        </form>
      </div>
    </section>
@@ -230,7 +234,9 @@ function renderCorrectScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
   <section>
+  
       <p>You got it right!</p>
+      <img src="img/correct-screen.gif" "alt="40 year old virgin clip"> 
       <p>${`Your Score is ${STORE.score} out of ${STORE.questions.length}`}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
@@ -249,6 +255,7 @@ function renderWrongScreen() {
   <section>
       <h3>You got it wrong.</h3>
       <p>The correct answer is ${STORE.questions[STORE.questionNumber].correctAnswer}.</p>
+      <img src="img/wrong-screen2.gif" class="wrong-gif" "alt="Undercover Brother clip">
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
       <form id="continue-form">
         <button type="submit" class= "glow-on-hover" id="continue">Continue</button>
@@ -257,7 +264,7 @@ function renderWrongScreen() {
 </main>`);
 
 $('main').children().css("flex-direction", "column");
-$('main').children().find("p").css("text-align", "center", "font-size", "5em")
+$('main').children().find("p").css("text-align", "center", "font-size", "5em");
 }
 
 function renderResultsScreen() {
