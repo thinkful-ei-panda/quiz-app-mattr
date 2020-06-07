@@ -124,15 +124,15 @@ function handlerSubmit(){
 
 
     // This Conditional statement checks the answer
-    if(selectedAnswer === currentCorrectAnswer) {
+    if (selectedAnswer.length < 1) {
+      // STORE.questionNumber += 1;
+      alert('You must choose an answer.');
+    }
+    else if(selectedAnswer === currentCorrectAnswer) {
       STORE.score += 1;
       // STORE.questionNumber += 1;
       console.log(`Your Score is ${STORE.score} out of 5`);
       return renderCorrectScreen();
-    
-    } else if (selectedAnswer.length < 1) {
-      // STORE.questionNumber += 1;
-      return '';
     } else {
       return renderWrongScreen();
     }
@@ -141,7 +141,7 @@ function handlerSubmit(){
 
 // $(handlerSubmit);
 
-// Continue submit event handler
+// Continue event handler
 function handlerContinue(){
   $('main').on('submit', '#continue-form',  event => {
     event.preventDefault();
@@ -206,20 +206,20 @@ console.log(currentImage);
        
        <form id='question-form'>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[0]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber].answers[0]}</label>
+           <input type="radio" id="answer1" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[0]}">
+           <label for="answer1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[1]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber].answers[1]} </label>
+           <input type="radio" id="answer2" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[1]}">
+           <label for="answer2">${STORE.questions[STORE.questionNumber].answers[1]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[2]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber].answers[2]} </label>
+           <input type="radio" id="answer3" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[2]}">
+           <label for="answer3">${STORE.questions[STORE.questionNumber].answers[2]} </label>
            </div>
          <div class= "input-selection">
-           <input type="radio" id="answer" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[3]}">
-           <label for="answer">${STORE.questions[STORE.questionNumber].answers[3]}</label>
+           <input type="radio" id="answer4" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[3]}">
+           <label for="answer4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
            </div>
            <button type="submit" class= "glow-on-hover" id="submitbtn" required>Submit</button>   
        </form>
@@ -285,11 +285,11 @@ $('main').children().find(".glow-on-hover").css("text-align", "center")
 
 
 function handlerEverything(){
-  $(handlerStart);
-  $(handlerSubmit);
-  $(handlerContinue);
-  $(handlerReset);
-  $(renderHomeScreen);
+  handlerStart();
+  handlerSubmit();
+  handlerContinue();
+  handlerReset();
+  renderHomeScreen();
 }
 
 $(handlerEverything);
