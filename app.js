@@ -106,21 +106,21 @@ function handlerStart(){
 function handlerSubmit(){
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
-    console.log(`handler submit working`);
+    // console.log(`handler submit working`);
 
     // created a variable to represent the current answer input value
     let selectedAnswer = $("input[name='answer-name']:checked").val();
 
     //Test console logs (not needed)
-    console.log(selectedAnswer);
-    console.log(STORE.questions[STORE.questionNumber].correctAnswer);
+    // console.log(selectedAnswer);
+    // console.log(STORE.questions[STORE.questionNumber].correctAnswer);
     
     
-    console.log(STORE.questionNumber);
+    // console.log(STORE.questionNumber);
 
     let currentCorrectAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
-    console.log(currentCorrectAnswer);
-    console.log(selectedAnswer === currentCorrectAnswer);
+    // console.log(currentCorrectAnswer);
+    // console.log(selectedAnswer === currentCorrectAnswer);
 
 
     // This Conditional statement checks the answer
@@ -158,15 +158,13 @@ function handlerContinue(){
   });
 }
 
-// $(handlerContinue);
-
-// Reset submit event handler
+// Reset event handler
 function handlerReset(){
-  $('main').on('submit', '#reset',  event => {
+  $('main').on('submit', '#reset-form',  event => {
     event.preventDefault();
     console.log(`handler reset working`);
     
-    return renderResultsScreen();
+    return $(renderHomeScreen);
 
   });
 }
@@ -273,8 +271,8 @@ function renderResultsScreen() {
   <section>
       <h3>Quiz Results</h3>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
-      <form id="continue-form">
-        <a href="https://thinkful-ei-panda.github.io/quiz-app-mattr/" class="glow-on-hover">Reset</a>
+      <form id="reset-form">
+        <button type="submit" class= "glow-on-hover" id="reset">Reset</button>
       </form>
   </section>
 </main>`);
