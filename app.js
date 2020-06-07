@@ -185,7 +185,7 @@ function renderHomeScreen() {
         </form>
   </section>
 </main>`);
-$('h1').addClass("animated bounce")
+// $('h1').addClass("animated bounce")
 }
 
 // $(renderHomeScreen);
