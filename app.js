@@ -185,7 +185,7 @@ function generateCorrectScreen() {
   </section>
 </main>`);
 
-// $('main').children().css("flex-direction", "column");
+$('main').children().css("flex-direction", "column");
 }
 
 //a function that renders the wrong answer screen
@@ -203,7 +203,7 @@ function generateWrongScreen() {
   </section>
 </main>`);
 
-// $('main').children().css("flex-direction", "column");
+$('main').children().css("flex-direction", "column");
 // $('main').children().find("p").css("text-align", "center", "font-size", "5em");
 }
 
@@ -219,7 +219,7 @@ function generateResultsScreen() {
   </section>
 </main>`);
 
-// $('main').children().css("flex-direction", "column");
+$('main').children().css("flex-direction", "column");
 // $('main').children().find(".glow-on-hover").css("text-align", "center")
 }
 
