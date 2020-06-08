@@ -232,7 +232,6 @@ function renderCorrectScreen() {
   console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
   <section>
-  
       <p>You got it right!</p>
       <img src="img/correct-screen.gif" "alt="40 year old virgin clip"> 
       <p>${`Your Score is ${STORE.score} out of ${STORE.questions.length}`}</p>
