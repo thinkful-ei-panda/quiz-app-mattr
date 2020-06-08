@@ -21,15 +21,15 @@ header{
 }
 
 body {
-  background: url("img/bluebg.jpg");
-    background-size: cover;
+  background: url("img/mobile-bluebg.jpg");
+    background-size: stretch;
     background-repeat: no-repeat; 
     background-color: #a4d1f8;
 }
 
 h1 {
   font-family: 'Play', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 4.5em;
+  font-size: 3em;
   color: #a4d1f8;
   text-align: center;
   -webkit-text-stroke: 0.2px black;
@@ -40,12 +40,6 @@ h1 {
  1px -1px 0 #000,
  -1px 1px 0 #000,
   1px 1px 0 #000;
-}
-
-h1 :after {
-  /* content : 'Movie Quiz'; */
-  color: #d6d6d6;
-  text-shadow: 0 1px 0 white;
 }
 
 h2 {
@@ -65,11 +59,19 @@ h3 {
   box-shadow: 0 2px 12px -4px #a4d1f8;
 }
 
+.image-box {
+  display: flex;
+justify-content: center;
+margin: 0;
+padding: 0;
+}
+
 img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   box-shadow: inset 1px 1px 150px #000;
   z-index: -1;
+  margin-top: 0;
 }
 
 main {
@@ -231,6 +233,13 @@ input[type=radio] {
 
 /*DESKTOP SCREENS*/
 @media screen and (min-width: 900px) {
+body {
+  background: url("img/bluebg.jpg");
+  background-size: stretch;
+  background-repeat: no-repeat; 
+  background-color: #a4d1f8;
+  }
+
 .question-box {
   width: 100%;
 }

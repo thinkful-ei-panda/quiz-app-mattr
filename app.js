@@ -1,23 +1,4 @@
-/* eslint-disable quotes */
-// 'use strict';
-
-/* eslint-disable strict */
-// /**
-//  * 
-//  * Technical requirements:
-//  * 
-//  * Your app should include a render() function, that regenerates the view each time the store is updated. 
-//  * See your course material, consult your instructor, and reference the slides for more details.
-//  *
-//  * NO additional HTML elements should be added to the index.html file.
-//  *
-//  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
-//  *
-//  * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
-//  * 
-//  */
-
-// /********** TEMPLATE GENERATION FUNCTIONS **********/
+ /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 /* Example store structure */
 
@@ -144,7 +125,6 @@ function handlerReset(){
 
 /********** GENERATE FUNCTION(S) **********/
 function generateHomeScreen() {
-  console.log('renderHomeScreen ran succesfully!');
   $('main').html(`<h1>Movie Quiz</h1><main>
   <img src="img/ironmanbg.gif" "alt="irom man clip"> 
   <section>
@@ -159,8 +139,6 @@ function generateHomeScreen() {
 
 function generateQuestionScreen() {
   let currentImage = IMAGE_ARRAY[STORE.questionNumber];
-console.log(currentImage);
-  console.log('renderQuestions ran succesfully!');
   $('main').html(`<main>
    <section>
      <div class= "image-box">
@@ -195,7 +173,6 @@ console.log(currentImage);
 }
 
 function generateCorrectScreen() {
-  console.log('renderQuestions ran succesfully!');
   $('main').html(`<h1>Movie Quiz</h1>
   <main>
   <section>
@@ -208,13 +185,11 @@ function generateCorrectScreen() {
   </section>
 </main>`);
 
-$('main').children().css("flex-direction", "column");
+// $('main').children().css("flex-direction", "column");
 }
 
 //a function that renders the wrong answer screen
 function generateWrongScreen() {
-  console.log('inside wrong screen ran succesfully!' + STORE.questionNumber);
-  console.log( `${STORE.questions[STORE.questionNumber].correctAnswer}`);
   $('main').html(`<h1>Movie Quiz</h1>
   <main>
   <section>
@@ -228,12 +203,11 @@ function generateWrongScreen() {
   </section>
 </main>`);
 
-$('main').children().css("flex-direction", "column");
-$('main').children().find("p").css("text-align", "center", "font-size", "5em");
+// $('main').children().css("flex-direction", "column");
+// $('main').children().find("p").css("text-align", "center", "font-size", "5em");
 }
 
 function generateResultsScreen() {
-  // console.log('renderFinal ran succesfully!');
   $('main').html(`<h1>Movie Quiz</h1>
   <main>
   <section>
@@ -245,8 +219,8 @@ function generateResultsScreen() {
   </section>
 </main>`);
 
-$('main').children().css("flex-direction", "column");
-$('main').children().find(".glow-on-hover").css("text-align", "center")
+// $('main').children().css("flex-direction", "column");
+// $('main').children().find(".glow-on-hover").css("text-align", "center")
 }
 
 /********** RENDER FUNCTION(S) **********/
