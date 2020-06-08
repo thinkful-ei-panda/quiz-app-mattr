@@ -87,7 +87,6 @@ const IMAGE_ARRAY = ["img/titanic.jpg", "img/iron.jpg", "img/friday.jpg", "img/b
 
 
 /********** EVENT HANDLER FUNCTIONS **********/
-// These functions handle events (submit, click, etc)
 
 // Start submit handler
 function handlerStart(){
@@ -106,31 +105,13 @@ function handlerStart(){
 function handlerSubmit(){
   $('main').on('submit', '#question-form',  event => {
     event.preventDefault();
-    // console.log(`handler submit working`);
-
-    // created a variable to represent the current answer input value
-    let selectedAnswer = $("input[name='answer-name']:checked").val();
-
-    //Test console logs (not needed)
-    // console.log(selectedAnswer);
-    // console.log(STORE.questions[STORE.questionNumber].correctAnswer);
-    
-    
-    // console.log(STORE.questionNumber);
-
-    let currentCorrectAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
-    // console.log(currentCorrectAnswer);
-    // console.log(selectedAnswer === currentCorrectAnswer);
-
-
-    // This Conditional statement checks the answer
+    const selectedAnswer = $("input[name='answer-name']:checked").val();
+    const currentCorrectAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
     if (selectedAnswer.length < 1) {
-      // STORE.questionNumber += 1;
       alert('You must choose an answer.');
     }
     else if(selectedAnswer === currentCorrectAnswer) {
       STORE.score += 1;
-      // STORE.questionNumber += 1;
       console.log(`Your Score is ${STORE.score} out of 5`);
       return renderCorrectScreen();
     } else {
@@ -139,14 +120,9 @@ function handlerSubmit(){
   });
 }
 
-// $(handlerSubmit);
-
-// Continue event handler
 function handlerContinue(){
   $('main').on('submit', '#continue-form',  event => {
     event.preventDefault();
-    console.log(`handler continue working`);
-    //Adds to the question count
     
     if(STORE.questionNumber < STORE.questions.length-1){
       STORE.questionNumber += 1;
@@ -163,19 +139,14 @@ function handlerReset(){
   $('main').on('submit', '#reset-form',  event => {
     event.preventDefault();
     console.log(`handler reset working`);
-    
     return $(renderHomeScreen);
-
   });
 }
 
-// $(handlerReset);
-
-
-/********** RENDER FUNCTION(S) **********/
-function renderHomeScreen() {
+/********** GENERATE FUNCTION(S) **********/
+function generateHomeScreen() {
   console.log('renderHomeScreen ran succesfully!');
-  $('main').html(`<main>
+  $('main').html(`<h1>Movie Quiz</h1><main>
   <img src="img/ironmanbg.gif" "alt="irom man clip"> 
   <section>
       <form id="start-form" class="starting">
@@ -183,13 +154,11 @@ function renderHomeScreen() {
         </form>
   </section>
 </main>`);
-// $('h1').addClass("animated bounce")
 }
 
-// $(renderHomeScreen);
 
 
-function renderQuestionScreen() {
+function generateQuestionScreen() {
   let currentImage = IMAGE_ARRAY[STORE.questionNumber];
 console.log(currentImage);
   console.log('renderQuestions ran succesfully!');
@@ -224,13 +193,12 @@ console.log(currentImage);
      </div>
    </section>
  </main>`);
-
-
 }
 
-function renderCorrectScreen() {
+function generateCorrectScreen() {
   console.log('renderQuestions ran succesfully!');
-  $('main').html(`<main>
+  $('main').html(`<h1>Movie Quiz</h1>
+  <main>
   <section>
       <p>You got it right!</p>
       <img src="img/correct-screen.gif" "alt="40 year old virgin clip"> 
@@ -245,10 +213,11 @@ $('main').children().css("flex-direction", "column");
 }
 
 //a function that renders the wrong answer screen
-function renderWrongScreen() {
+function generateWrongScreen() {
   console.log('inside wrong screen ran succesfully!' + STORE.questionNumber);
   console.log( `${STORE.questions[STORE.questionNumber].correctAnswer}`);
-  $('main').html(`<main>
+  $('main').html(`<h1>Movie Quiz</h1>
+  <main>
   <section>
       <h3>You got it wrong.</h3>
       <img src="img/wrong-screen2.gif" class="wrong-gif" "alt="Undercover Brother clip">
@@ -264,9 +233,10 @@ $('main').children().css("flex-direction", "column");
 $('main').children().find("p").css("text-align", "center", "font-size", "5em");
 }
 
-function renderResultsScreen() {
+function generateResultsScreen() {
   // console.log('renderFinal ran succesfully!');
-  $('main').html(`<main>
+  $('main').html(`<h1>Movie Quiz</h1>
+  <main>
   <section>
       <h3>Quiz Results</h3>
       <p>Your Score is ${STORE.score} out of ${STORE.questions.length}</p>
@@ -280,13 +250,36 @@ $('main').children().css("flex-direction", "column");
 $('main').children().find(".glow-on-hover").css("text-align", "center")
 }
 
+/********** RENDER FUNCTION(S) **********/
+function renderHomeScreen(){
+  $('main').html(generateHomeScreen());
+  }
 
+function renderQuestionScreen(){
+$('main').html(generateQuestionScreen());
+}
+
+
+function renderCorrectScreen(){
+  $('main').html(generateCorrectScreen()); 
+}
+
+function renderWrongScreen(){
+  $('main').html(generateWrongScreen()); 
+}
+
+function renderResultsScreen(){
+  $('main').html(generateResultsScreen()); 
+}
+
+
+/********** CALL ALL FUNCTION(S) **********/
 function handlerEverything(){
   handlerStart();
   handlerSubmit();
   handlerContinue();
   handlerReset();
-  renderHomeScreen();
+  generateHomeScreen();
 }
 
 $(handlerEverything);
