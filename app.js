@@ -95,11 +95,10 @@ function handlerStart(){
     STORE.questionNumber = 0;
     STORE.score = 0;
     STORE.quizStarted = true;
-    // console.log('Game has started');
     return renderQuestionScreen();
   });
 }
-// $(handlerStart);
+
 
 // Question submit event handler
 function handlerSubmit(){
