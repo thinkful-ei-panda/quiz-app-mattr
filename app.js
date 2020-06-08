@@ -172,7 +172,7 @@ console.log(currentImage);
        
        <form id='question-form'>
          <div class= "input-selection">
-           <input type="radio" id="answer1" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[0]}">
+           <input type="radio" id="answer1" name="answer-name" value="${STORE.questions[STORE.questionNumber].answers[0]}" required>
            <label for="answer1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
            </div>
          <div class= "input-selection">
